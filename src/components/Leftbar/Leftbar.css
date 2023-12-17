@@ -1,0 +1,62 @@
+.leftbar {
+  background: #212b36;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100vh;
+  gap: 1rem;
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+
+  .leftbar-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 45.21px;
+  }
+
+  .leftbar-top img {
+    height: 30px;
+  }
+
+  .leftbar-navlink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 10px;
+    padding-top: 20px;
+  }
+
+  .leftbarOptions {
+    display: flex;
+    cursor: pointer;
+
+    .optionIcon {
+      margin-right: 20px;
+      font-size: 30px;
+      font-weight: 500;
+    }
+  }
+}
+
+.nav-link-item {
+  border-bottom: 2px solid transparent;
+  color: white !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-link-item:hover {
+  cursor: pointer;
+  border-bottom: 2px solid red;
+}
+
+a.nav-link-item.active {
+  border-bottom: 2px solid red;
+  color: var(--orange);
+}

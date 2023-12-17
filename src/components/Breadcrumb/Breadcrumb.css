@@ -1,0 +1,18 @@
+/* Breadcrumb.css */
+
+.breadcrumb-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: #007bff; /* Adjust the color as needed */
+  /* Additional styles for all links */
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
