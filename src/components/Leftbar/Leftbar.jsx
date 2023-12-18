@@ -27,33 +27,33 @@ export default function Leftbar() {
           >
             <div className="leftbarOptions">
               <Home className="optionIcon" />
-              <span className="optionName">Dashboard</span>
+              <span >Dashboard</span>
             </div>
           </NavLink>
 
           <NavLink to="account" className={`nav-link nav-link-item `}>
             <div className="leftbarOptions">
               <ManageAccounts className="optionIcon" />
-              <span className="optionName">Account</span>
+              <span >Account</span>
             </div>
           </NavLink>
 
           <NavLink to="users" className={`nav-link nav-link-item `}>
             <div className="leftbarOptions">
               <AccountBox className="optionIcon" />
-              <span className="optionName">Users</span>
+              <span >Users</span>
             </div>
           </NavLink>
           <NavLink to="messages" className={`nav-link nav-link-item `}>
             <div className="leftbarOptions">
               <Chat className="optionIcon" />
-              <span className="optionName">Messages</span>
+              <span >Messages</span>
             </div>
           </NavLink>
           <NavLink to="notifications" className={`nav-link nav-link-item `}>
             <div className="leftbarOptions">
               <NotificationsActive className="optionIcon" />
-              <span className="optionName">Notifications</span>
+              <span >Notifications</span>
             </div>
           </NavLink>
         </div>

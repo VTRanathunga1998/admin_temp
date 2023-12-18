@@ -27,6 +27,8 @@ const Doctor = () => {
   const [loading, setLoading] = useState(false);
   const [rows, setRows] = useState([]);
 
+  console.log(rows);
+
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
@@ -35,7 +37,6 @@ const Doctor = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           // Assuming your API response is an array of doctors
           const updatedRows = data.map((doctor) =>
             createData(
@@ -43,7 +44,7 @@ const Doctor = () => {
               doctor.email,
               doctor.doctor.specific_area,
               doctor.doctor.regi_no,
-              "Edit/Delete"
+              doctor._id
             )
           );
           setRows(updatedRows);
@@ -62,12 +63,32 @@ const Doctor = () => {
 
   const handleEdit = (row) => {
     // Add logic for handling edit action
-    console.log(`Edit clicked for ${row.doctorName}`);
+    console.log(`Edit clicked for ${row._id}`);
   };
 
-  const handleDelete = (row) => {
-    // Add logic for handling delete action
-    console.log(`Delete clicked for ${row.doctorName}`);
+  const handleDelete = async (row) => {
+    try {
+      const response = await fetch(`/api/user/${row.action}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Server returned ${response.status}: ${errorMessage}`);
+      }
+
+      // Assuming the delete operation was successful, you might want to update the state
+      console.log("User delete successful");
+
+      // Optionally, you can update the state to remove the deleted row
+      setRows((prevRows) => prevRows.filter((r) => r._id !== row));
+    } catch (error) {
+      console.error("Error deleting user:", error.message);
+      // Handle the error (e.g., show a notification to the user)
+    }
   };
 
   return (
