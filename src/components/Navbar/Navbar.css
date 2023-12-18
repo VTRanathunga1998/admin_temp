@@ -1,6 +1,7 @@
 .navbar {
   right: 0px;
   z-index: 10;
+  background-color: white;
   display: flex;
   padding: 10px;
   flex: 7;

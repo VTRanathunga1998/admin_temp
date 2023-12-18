@@ -52,9 +52,25 @@ const ApproveUser = () => {
     return new Date(createdAt).toLocaleString();
   };
 
-  const handleApprove = (row) => {
-    console.log(`Approve clicked for ${row._id}`);
-    // Add logic for handling approve action
+  const handleApprove = async (row) => {
+    try {
+      const response = await fetch(`/api/user/approve-user/${row.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Server returned ${response.status}: ${errorMessage}`);
+      }
+
+      console.log("User approval successful");
+
+    } catch (error) {
+      console.error("Error approving user:", error.message);
+    }
   };
 
   const handleDecline = async (row) => {
@@ -89,7 +105,7 @@ const ApproveUser = () => {
                 Recent Users
               </TableCell>
             </TableRow>
-            {rows.map((row,index) => (
+            {rows.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{

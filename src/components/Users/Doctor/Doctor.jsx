@@ -12,6 +12,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import "./Doctor.css";
+import Searchbar from "../../Searchbar/Searchbar";
+import DoctorFeed from "./DoctorFeed";
 
 function createData(
   doctorName,
@@ -92,60 +94,72 @@ const Doctor = () => {
   };
 
   return (
-    <div className="table-container">
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
-                Doctor Name
-              </TableCell>
-              <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
-                Email Address
-              </TableCell>
-              <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
-                Special Area
-              </TableCell>
-              <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
-                Register Number
-              </TableCell>
-              <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
-                Action
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.doctorName}
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                  textAlign: "center",
-                }}
-              >
-                <TableCell align="center" component="th" scope="row">
-                  {row.doctorName}
+    <div>
+      <DoctorFeed />
+      <div
+        style={{
+          marginTop: "10px",
+        }}
+        className="searchbar"
+      >
+        <Searchbar />
+        <button>Add doctor</button>
+      </div>
+      <div className="table-container">
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
+                  Doctor Name
                 </TableCell>
-                <TableCell align="center">{row.emailAddress}</TableCell>
-                <TableCell align="center">{row.specialArea}</TableCell>
-                <TableCell align="center">{row.registerNumber}</TableCell>
-                <TableCell align="center">
-                  <Tooltip title="Edit">
-                    <IconButton onClick={() => handleEdit(row)}>
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Delete">
-                    <IconButton onClick={() => handleDelete(row)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </Tooltip>
+                <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
+                  Email Address
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
+                  Special Area
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
+                  Register Number
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold", textAlign: "center" }}>
+                  Action
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={row.doctorName}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                    textAlign: "center",
+                  }}
+                >
+                  <TableCell align="center" component="th" scope="row">
+                    {row.doctorName}
+                  </TableCell>
+                  <TableCell align="center">{row.emailAddress}</TableCell>
+                  <TableCell align="center">{row.specialArea}</TableCell>
+                  <TableCell align="center">{row.registerNumber}</TableCell>
+                  <TableCell align="center">
+                    <Tooltip title="Edit">
+                      <IconButton onClick={() => handleEdit(row)}>
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                      <IconButton onClick={() => handleDelete(row)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </div>
   );
 };

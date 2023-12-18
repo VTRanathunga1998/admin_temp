@@ -9,6 +9,9 @@ import Breadcrumb from "./components/Breadcrumb/Breadcrumb";
 import "./App.css";
 import UserDetails from "./Pages/UserDetails/UserDetails";
 import Doctor from "./components/Users/Doctor/Doctor";
+import UserPharmacist from "./Pages/pharmacistpage/UserPharmacist";
+import Messages from "./Pages/messagepage/Messages";
+import Notifications from "./Pages/notificationpage/Notifications";
 
 function App() {
   return (
@@ -17,14 +20,17 @@ function App() {
         <Leftbar />
         <main className="main-container">
           <Navbar />
-          <Breadcrumb />
+          {/* <Breadcrumb /> */}
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route index path="/dashboard" element={<Dashboard />} />
+            <Route index path="/messages" element={<Messages />} />
+            <Route index path="/notifications" element={<Notifications />} />
             <Route path="/users" element={<UserDetails />}>
               {/* Nested routes for /users */}
               <Route index element={<Navigate to="doctor" />} />
               <Route path="doctor" element={<Doctor />} />
+              <Route path="pharmacist" element={<UserPharmacist />} />
             </Route>
           </Routes>
         </main>

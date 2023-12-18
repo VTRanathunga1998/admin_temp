@@ -6,11 +6,11 @@ export default function Searchbar(){
         <div className='searchbar'>
 
             <div className='filter'>
-                <img src='./assets/filter.png'/>
+                <img src='../assets/filter.png'/>
             </div>
 
             <div className='search'>
-                <img src='./assets/search.png'/>
+                <img src='../assets/search.png'/>
                 <input type='text' value="Search..."/>
             </div>
             
